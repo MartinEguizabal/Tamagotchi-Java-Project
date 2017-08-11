@@ -9,12 +9,12 @@ public class WashampTamagotchiTest{
 
   @Before
   public void before(){
-    washamptamagotchi = new WashampTamagotchi("Whizzup", 0, 0, 0, 0);
+    washamptamagotchi = new WashampTamagotchi("TestTamagotchi", 0, 0, 0, 0);
   }
 
   @Test
   public void canGetName(){
-    assertEquals("Whizzup", washamptamagotchi.getName());
+    assertEquals("TestTamagotchi", washamptamagotchi.getName());
   }
 
   @Test
@@ -27,3 +27,5 @@ public class WashampTamagotchiTest{
     assertEquals(0, washamptamagotchi.getHappinessLevel());
   }
 }
+
+// Whizzup

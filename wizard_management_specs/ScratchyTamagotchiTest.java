@@ -9,12 +9,12 @@ public class ScratchyTamagotchiTest {
 
   @Before
   public void before(){
-    scratchytamagotchi = new ScratchyTamagotchi("Scratchy", 0, 0, 0, 0);
+    scratchytamagotchi = new ScratchyTamagotchi("TestTamagotchi", 0, 0, 0, 0);
   }
 
   @Test
   public void canGetName(){
-    assertEquals("Scratchy", scratchytamagotchi.getName());
+    assertEquals("TestTamagotchi", scratchytamagotchi.getName());
   }
 
   @Test
@@ -27,3 +27,5 @@ public class ScratchyTamagotchiTest {
     assertEquals(0, scratchytamagotchi.getDramaLevel());
   }
 }
+
+// Scratchy

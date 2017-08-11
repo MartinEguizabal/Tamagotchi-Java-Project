@@ -9,12 +9,12 @@ public class ItchyTamagotchiTest {
 
   @Before
   public void before(){
-    itchytamagotchi = new ItchyTamagotchi("Icky", 0, 0, 0, 0);
+    itchytamagotchi = new ItchyTamagotchi("TestTamagotchi", 0, 0, 0, 0);
   }
 
   @Test
   public void canGetName(){
-    assertEquals("Icky", itchytamagotchi.getName());
+    assertEquals("TestTamagotchi", itchytamagotchi.getName());
   }
 
   @Test
@@ -26,6 +26,6 @@ public class ItchyTamagotchiTest {
   public void canGetAge(){
     assertEquals(0, itchytamagotchi.getAge());
   }
-
-
 }
+
+// Icky
