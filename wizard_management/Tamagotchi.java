@@ -20,8 +20,16 @@ public abstract class Tamagotchi {
     return this.name;
   }
 
+  public int getHungerLevel(){
+    return this.hunger_level;
+  }
+
   public int getHappinessLevel(){
     return this.happiness_level;
+  }
+
+  public int getDramaLevel(){
+    return this.drama_level;
   }
 
   public int getAge(){
