@@ -56,9 +56,11 @@ public abstract class Tamagotchi {
     this.age = age;
   }
 
-  // public void isBorn(int hunger_level, int happiness_level, int drama_level){
-  //   this.setHungerLevel(hunger_level);
-  // }
+  public void isBorn(int hunger_level, int happiness_level, int drama_level){
+    this.setHungerLevel(hunger_level);
+    this.setHappinessLevel(happiness_level);
+    this.setDramaLevel(drama_level);
+  }
 
 }
 

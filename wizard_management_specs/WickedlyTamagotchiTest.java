@@ -56,9 +56,11 @@ public class WickedlyTamagotchiTest{
     assertEquals(3, wickedlytamagotchi1.getAge());
   }
 
-  // @Test
-  // public void canIsBorn(){
-  //   wickedlytamagotchi1.isBorn(10, 4, 3)
-  //   assertEquals("Wyvern", )
-  // }
+  @Test
+  public void canIsBorn(){
+    wickedlytamagotchi1.isBorn(10, 4, 3);
+    assertEquals(10, wickedlytamagotchi1.getHungerLevel());
+    assertEquals(4, wickedlytamagotchi1.getHappinessLevel());
+    assertEquals(3, wickedlytamagotchi1.getDramaLevel());
+  }
 }
