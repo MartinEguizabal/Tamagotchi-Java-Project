@@ -24,7 +24,7 @@ public class ItchyTamagotchiTest {
 
   @Test
   public void canGetAge(){
-    assertEquals(0, itchytamagotchi.getAge());
+    assertEquals(0, itchytamagotchi.getAge(), 0.01);
   }
 }
 

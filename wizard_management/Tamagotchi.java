@@ -6,9 +6,9 @@ public abstract class Tamagotchi {
   int hunger_level;
   int happiness_level;
   int drama_level;
-  int age;
+  double age;
 
-  public Tamagotchi(String name, int hunger_level, int happiness_level, int drama_level, int age){
+  public Tamagotchi(String name, int hunger_level, int happiness_level, int drama_level, double age){
     this.name = name;
     this.hunger_level = hunger_level;
     this.happiness_level = happiness_level;
@@ -48,11 +48,11 @@ public abstract class Tamagotchi {
     this.drama_level = drama_level;
   }
 
-  public int getAge(){
+  public double getAge(){
     return this.age;
   }
 
-  public void setAge(int age){
+  public void setAge(double age){
     this.age = age;
   }
 
@@ -60,6 +60,13 @@ public abstract class Tamagotchi {
     this.setHungerLevel(hunger_level);
     this.setHappinessLevel(happiness_level);
     this.setDramaLevel(drama_level);
+  }
+
+  public void isAging(double minutes){
+    // this.age += Math.round((minutes/41.76));
+    double increase = minutes/41.76;
+    increase = Math.round(increase *100.0)/100.0;
+    age += increase;
   }
 
 }

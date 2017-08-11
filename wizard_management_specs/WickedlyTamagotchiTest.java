@@ -47,13 +47,13 @@ public class WickedlyTamagotchiTest{
 
   @Test
   public void canGetAge(){
-    assertEquals(0, wickedlytamagotchi1.getAge());
+    assertEquals(0, wickedlytamagotchi1.getAge(), 0.01);
   }
 
   @Test
   public void canSetAge(){
     wickedlytamagotchi1.setAge(3);
-    assertEquals(3, wickedlytamagotchi1.getAge());
+    assertEquals(3, wickedlytamagotchi1.getAge(), 0.01);
   }
 
   @Test
@@ -63,4 +63,18 @@ public class WickedlyTamagotchiTest{
     assertEquals(4, wickedlytamagotchi1.getHappinessLevel());
     assertEquals(3, wickedlytamagotchi1.getDramaLevel());
   }
+
+  @Test
+  public void canDoAging(){
+    wickedlytamagotchi1.isAging(60);
+    assertEquals(1.44, wickedlytamagotchi1.getAge(), 0.01);
+  }
+  // Tamagotchi lives about 2 human years, if fully healthy.
+  // Assuming a human life is 70 years, a Tamagotchi's is 2.9% of a human life.
+  // A Tamagotchi day is 41.76 minutes.
+  // A Tamagotchi month is 1169.28 mintues or 19.49 hours.
+  // A Tamagotchi year is 14031.36, 233.86 hours or 9.74 days.
+
 }
+
+
