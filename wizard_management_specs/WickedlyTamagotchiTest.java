@@ -9,7 +9,7 @@ public class WickedlyTamagotchiTest{
 
   @Before
   public void before(){
-    wickedlytamagotchi1 = new WickedlyTamagotchi("Wyvern", 0, 0, 0, 0);
+    wickedlytamagotchi1 = new WickedlyTamagotchi("Wyvern", 0, 0, 0, 0, false);
   }
 
   @Test
@@ -57,6 +57,17 @@ public class WickedlyTamagotchiTest{
   }
 
   @Test
+  public void canGetAliveTrueFalse(){
+    assertEquals(false, wickedlytamagotchi1.alive());
+  }
+
+  @Test
+  public void canSetAliveTrueFalse(){
+    wickedlytamagotchi1.setAlive(true);
+    assertEquals(true, wickedlytamagotchi1.alive());
+  }
+
+  @Test
   public void canIsBorn(){
     wickedlytamagotchi1.isBorn(10, 4, 3);
     assertEquals(10, wickedlytamagotchi1.getHungerLevel());
@@ -75,6 +86,10 @@ public class WickedlyTamagotchiTest{
   // A Tamagotchi month is 1169.28 mintues or 19.49 hours.
   // A Tamagotchi year is 14031.36, 233.86 hours or 9.74 days.
 
+  // @Test
+  // public void canFeed(){
+  //   wickedlytamagotchi1.feed(10);
+  // }
 }
 
 
