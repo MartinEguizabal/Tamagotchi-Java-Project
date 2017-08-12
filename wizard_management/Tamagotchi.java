@@ -116,7 +116,10 @@ public abstract class Tamagotchi {
       return "Yummy";
   }
 
-  // public void feed(String food){
-  //     }
+  public void sleep(){
+    this.setHungerLevel(this.hunger_level += 1);
+    this.setHappinessLevel(this.happiness_level += 1);
+    this.setDramaLevel(this.drama_level -= 1);
+  }
 }
 

@@ -24,6 +24,18 @@ public class WickedlyTamagotchiTest{
   }
 
   @Test
+  public void cantSetHappinessBeyond10(){
+    wickedlytamagotchi1.setHappinessLevel(11);
+    assertEquals(0, wickedlytamagotchi1.getHappinessLevel());
+  }
+
+  @Test
+  public void cantSetHappinessBellow0(){
+    wickedlytamagotchi1.setHappinessLevel(-1);
+    assertEquals(0, wickedlytamagotchi1.getHappinessLevel());
+  }
+
+  @Test
   public void canGetHappinessLevel(){
     assertEquals(0, wickedlytamagotchi1.getHappinessLevel());
   }
@@ -94,10 +106,19 @@ public class WickedlyTamagotchiTest{
   }
 
   @Test
-  public void canFeedDontLikeFood(){
+  public void canFeedDontButLikeFood(){
     wickedlytamagotchi1.isBorn(10, 4, 3);
     assertEquals("Yeachtk, I don't eat dat!", wickedlytamagotchi1.feed("spinach"));
     assertEquals(10, wickedlytamagotchi1.getHungerLevel());
+  }
+
+  @Test
+  public void canSleep(){
+    WickedlyTamagotchi wickedlytamagotchi2 = new WickedlyTamagotchi("Testy", 8, 4, 4, 4, true);
+    wickedlytamagotchi2.sleep();
+    assertEquals(9, wickedlytamagotchi2.getHungerLevel());
+    assertEquals(5, wickedlytamagotchi2.getHappinessLevel());
+    assertEquals(3, wickedlytamagotchi2.getDramaLevel());
   }
 }
 
