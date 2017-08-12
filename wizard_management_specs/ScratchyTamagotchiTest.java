@@ -9,7 +9,7 @@ public class ScratchyTamagotchiTest {
 
   @Before
   public void before(){
-    scratchytamagotchi = new ScratchyTamagotchi("TestTamagotchi", 0, 0, 0, 0, false);
+    scratchytamagotchi = new ScratchyTamagotchi("TestTamagotchi", 0, 0, 0, 0, false, 1);
   }
 
   @Test

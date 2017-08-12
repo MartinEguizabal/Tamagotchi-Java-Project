@@ -6,10 +6,12 @@ import java.util.*;
 public class WickedlyTamagotchiTest{
 
   WickedlyTamagotchi wickedlytamagotchi1;
+  WickedlyTamagotchi wickedlytamagotchi2;
 
   @Before
   public void before(){
-    wickedlytamagotchi1 = new WickedlyTamagotchi("Wyvern", 0, 0, 0, 0, false);
+    wickedlytamagotchi1 = new WickedlyTamagotchi("Wyvern", 0, 0, 0, 0, false, 1);
+    wickedlytamagotchi2 = new WickedlyTamagotchi("Testy", 8, 4, 4, 4, true, 80);
   }
 
   @Test
@@ -26,7 +28,7 @@ public class WickedlyTamagotchiTest{
   @Test
   public void cantSetHappinessBeyond10(){
     wickedlytamagotchi1.setHappinessLevel(11);
-    assertEquals(0, wickedlytamagotchi1.getHappinessLevel());
+    assertEquals(10, wickedlytamagotchi1.getHappinessLevel());
   }
 
   @Test
@@ -80,6 +82,17 @@ public class WickedlyTamagotchiTest{
   }
 
   @Test
+  public void canGetWeight(){
+    assertEquals(0, wickedlytamagotchi1.getWeight());
+  }
+
+  @Test
+  public void canSetWeight(){
+    wickedlytamagotchi1.setWeight(10);
+    assertEquals(10, wickedlytamagotchi1.getWeight());
+  }
+
+  @Test
   public void canIsBorn(){
     wickedlytamagotchi1.isBorn(10, 4, 3);
     assertEquals(10, wickedlytamagotchi1.getHungerLevel());
@@ -114,12 +127,17 @@ public class WickedlyTamagotchiTest{
 
   @Test
   public void canSleep(){
-    WickedlyTamagotchi wickedlytamagotchi2 = new WickedlyTamagotchi("Testy", 8, 4, 4, 4, true);
     wickedlytamagotchi2.sleep();
     assertEquals(9, wickedlytamagotchi2.getHungerLevel());
     assertEquals(5, wickedlytamagotchi2.getHappinessLevel());
     assertEquals(3, wickedlytamagotchi2.getDramaLevel());
   }
+
+  // @Test
+  // public void canGetsSick(){
+  //   wickedlytamagotchi2
+
+  // }
 }
 
 

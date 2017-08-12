@@ -8,8 +8,9 @@ public abstract class Tamagotchi {
   int drama_level;
   double age;
   boolean alive;
+  int weight;
 
-  public Tamagotchi(String name, int hunger_level, int happiness_level, int drama_level, double age, boolean alive){
+  public Tamagotchi(String name, int hunger_level, int happiness_level, int drama_level, double age, boolean alive, int weight){
     this.name = name;
     this.hunger_level = hunger_level;
     this.happiness_level = happiness_level;
@@ -31,9 +32,13 @@ public abstract class Tamagotchi {
   }
 
   public void setHungerLevel(int hunger_level){
-    if((this.hunger_level >= 0 && this.hunger_level < 10) && (hunger_level >= 0 && hunger_level <= 10)){
-    // if(this.hunger_level && new_hunger_level == (1..10)){
+    // if((this.hunger_level >= 0 && this.hunger_level < 10) && (hunger_level >= 0 && hunger_level <= 10)){
     this.hunger_level = hunger_level;
+    if (this.happiness_level < 0){
+      this.happiness_level = 0;
+    }
+    if(this.happiness_level > 10){
+      this.happiness_level = 10;
     }
   }
 
@@ -42,8 +47,13 @@ public abstract class Tamagotchi {
   }
 
   public void setHappinessLevel(int happiness_level){
-    if((this.happiness_level >= 0 && this.happiness_level < 10) && (happiness_level >= 0 && happiness_level <= 10)){
+    // if((this.happiness_level >= 0 && this.happiness_level < 10) && (happiness_level >= 0 && happiness_level <= 10)){
     this.happiness_level = happiness_level;
+    if (this.happiness_level < 0){
+      this.happiness_level = 0;
+    }
+    if(this.happiness_level > 10){
+      this.happiness_level = 10;
     }
   }
 
@@ -52,8 +62,13 @@ public abstract class Tamagotchi {
   }
 
   public void setDramaLevel(int drama_level){
-    if((this.drama_level >= 0 && this.drama_level < 10) && (drama_level >= 0 && drama_level <= 10)){
+    // if((this.drama_level >= 0 && this.drama_level < 10) && (drama_level >= 0 && drama_level <= 10)){
     this.drama_level = drama_level;
+    if (this.drama_level < 0){
+      this.drama_level = 0;
+    }
+    if(this.drama_level > 10){
+      this.drama_level = 10;
     }
   }
 
@@ -71,6 +86,16 @@ public abstract class Tamagotchi {
 
   public void setAliveTrueFalse(Boolean soul){
     this.alive = soul;
+  }
+
+  public int getWeight(){
+    return this.weight;
+  }
+
+  public void setWeight(int weight){
+    if((this.weight >= 0 && this.weight < 100) && (weight >= 0 && weight <= 100)){
+    this.weight = weight;
+    }
   }
 
   public void isBorn(int hunger_level, int happiness_level, int drama_level){
@@ -121,5 +146,11 @@ public abstract class Tamagotchi {
     this.setHappinessLevel(this.happiness_level += 1);
     this.setDramaLevel(this.drama_level -= 1);
   }
+
+  // public void getsSick(){
+  //   if(this.weight > 75){
+  //     this.setHappinessLevel(this.happiness_level - )
+  //   }
+  // }
 }
 
