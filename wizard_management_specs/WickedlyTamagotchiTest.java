@@ -58,13 +58,13 @@ public class WickedlyTamagotchiTest{
 
   @Test
   public void canGetAliveTrueFalse(){
-    assertEquals(false, wickedlytamagotchi1.alive());
+    assertEquals(false, wickedlytamagotchi1.getAliveTrueFalse());
   }
 
   @Test
   public void canSetAliveTrueFalse(){
-    wickedlytamagotchi1.setAlive(true);
-    assertEquals(true, wickedlytamagotchi1.alive());
+    wickedlytamagotchi1.setAliveTrueFalse(true);
+    assertEquals(true, wickedlytamagotchi1.getAliveTrueFalse());
   }
 
   @Test
@@ -86,10 +86,19 @@ public class WickedlyTamagotchiTest{
   // A Tamagotchi month is 1169.28 mintues or 19.49 hours.
   // A Tamagotchi year is 14031.36, 233.86 hours or 9.74 days.
 
-  // @Test
-  // public void canFeed(){
-  //   wickedlytamagotchi1.feed(10);
-  // }
+  @Test
+  public void canFeed(){
+    wickedlytamagotchi1.isBorn(10, 4, 3);
+    assertEquals("Yummy", wickedlytamagotchi1.feed("protein shake"));
+    assertEquals(7, wickedlytamagotchi1.getHungerLevel());
+  }
+
+  @Test
+  public void canFeedDontLikeFood(){
+    wickedlytamagotchi1.isBorn(10, 4, 3);
+    assertEquals("Yeachtk, I don't eat dat!", wickedlytamagotchi1.feed("spinach"));
+    assertEquals(10, wickedlytamagotchi1.getHungerLevel());
+  }
 }
 
 

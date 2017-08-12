@@ -31,7 +31,10 @@ public abstract class Tamagotchi {
   }
 
   public void setHungerLevel(int hunger_level){
+    if((this.hunger_level >= 0 && this.hunger_level < 10) && (hunger_level >= 0 && hunger_level <= 10)){
+    // if(this.hunger_level && new_hunger_level == (1..10)){
     this.hunger_level = hunger_level;
+    }
   }
 
   public int getHappinessLevel(){
@@ -39,7 +42,9 @@ public abstract class Tamagotchi {
   }
 
   public void setHappinessLevel(int happiness_level){
+    if((this.happiness_level >= 0 && this.happiness_level < 10) && (happiness_level >= 0 && happiness_level <= 10)){
     this.happiness_level = happiness_level;
+    }
   }
 
   public int getDramaLevel(){
@@ -47,7 +52,9 @@ public abstract class Tamagotchi {
   }
 
   public void setDramaLevel(int drama_level){
+    if((this.drama_level >= 0 && this.drama_level < 10) && (drama_level >= 0 && drama_level <= 10)){
     this.drama_level = drama_level;
+    }
   }
 
   public double getAge(){
@@ -79,5 +86,37 @@ public abstract class Tamagotchi {
     age += increase;
   }
 
+  public String feed(String food){
+    int hunger_decrease;
+      switch (food){
+        case "protein shake": hunger_decrease = 3;
+        // happiness_increase = 1;
+        break;
+        case "slurpy": hunger_decrease = 1;
+        break;
+        case "steak": hunger_decrease = 4;
+        // happiness_increase = 2;
+        break;
+        case "lemon curd": hunger_decrease = 1;
+        break;
+        case "cherry cough syrup": hunger_decrease = 1;
+        break;
+        case "irn-bru": hunger_decrease = 2;
+        // happiness_increase = 1;
+        break;
+        case "marmelade haggis": hunger_decrease = 5;
+        // happiness_increase = 3;
+        break;
+        default: return "Yeachtk, I don't eat dat!";
+        // default: System.out.printl("yeachtk, I don't eat dat!");
+      }
+      this.setHungerLevel(this.hunger_level -= hunger_decrease);
+      // this.happiness_level += happiness_increase;
+        // System.out.println("Yummy!");
+      return "Yummy";
+  }
+
+  // public void feed(String food){
+  //     }
 }
 
