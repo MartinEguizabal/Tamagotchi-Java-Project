@@ -7,12 +7,15 @@ public class WickedlyTamagotchiTest{
 
   WickedlyTamagotchi wickedlytamagotchi1;
   WickedlyTamagotchi wickedlytamagotchi2;
+  WickedlyTamagotchi wickedlytamagotchi3;
 
   @Before
   public void before(){
     wickedlytamagotchi1 = new WickedlyTamagotchi("Wyvern", 0, 0, 0, 0, false, 1);
     wickedlytamagotchi2 = new WickedlyTamagotchi("Testy", 8, 4, 4, 4, true, 80);
+    wickedlytamagotchi3 = new WickedlyTamagotchi("Excess", 10, 0, 10, 1, true, 90);
   }
+  // name, hunger_level, happiness_level, drama_level, age, alive, weight
 
   @Test
   public void canGetName(){
@@ -83,7 +86,7 @@ public class WickedlyTamagotchiTest{
 
   @Test
   public void canGetWeight(){
-    assertEquals(0, wickedlytamagotchi1.getWeight());
+    assertEquals(1, wickedlytamagotchi1.getWeight());
   }
 
   @Test
@@ -133,11 +136,19 @@ public class WickedlyTamagotchiTest{
     assertEquals(3, wickedlytamagotchi2.getDramaLevel());
   }
 
-  // @Test
-  // public void canGetsSick(){
-  //   wickedlytamagotchi2
+  @Test
+  public void canGetsOverweight(){
+    wickedlytamagotchi2.getsOverweight();
+    assertEquals(1, wickedlytamagotchi2.getHappinessLevel());
+    assertEquals(8, wickedlytamagotchi2.getDramaLevel());
+  }
 
-  // }
+  @Test
+  public void canGetsOverweightExcess(){
+    wickedlytamagotchi3.getsOverweight();
+    assertEquals(0, wickedlytamagotchi3.getHappinessLevel());
+    assertEquals(10, wickedlytamagotchi3.getDramaLevel());
+  }
 }
 
 

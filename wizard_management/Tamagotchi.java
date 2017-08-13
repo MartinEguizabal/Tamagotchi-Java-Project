@@ -17,6 +17,7 @@ public abstract class Tamagotchi {
     this.drama_level = drama_level;
     this.age = age;
     this.alive = alive;
+    this.weight = weight;
   }
 
   public String getName(){
@@ -142,15 +143,16 @@ public abstract class Tamagotchi {
   }
 
   public void sleep(){
-    this.setHungerLevel(this.hunger_level += 1);
-    this.setHappinessLevel(this.happiness_level += 1);
-    this.setDramaLevel(this.drama_level -= 1);
+    this.setHungerLevel(this.hunger_level + 1);
+    this.setHappinessLevel(this.happiness_level + 1);
+    this.setDramaLevel(this.drama_level - 1);
   }
 
-  // public void getsSick(){
-  //   if(this.weight > 75){
-  //     this.setHappinessLevel(this.happiness_level - )
-  //   }
-  // }
+  public void getsOverweight(){
+    if(getWeight() > 75){
+     this.setHappinessLevel(this.happiness_level - 3);
+     this.setDramaLevel(this.drama_level + 4);
+    }
+  }
 }
 
