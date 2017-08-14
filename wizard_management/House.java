@@ -66,5 +66,44 @@ public class House{
     return this.countMembers() == this.members.length;
   }
 
+  public void removeMember(Tamagotchi member){
+    for (int i = 0; i < this.members.length ; i++){
+      if(this.members[i] == member){
+        this.members[i] = null;
+      }
+    }
+  }
+
+  // public void removeMember(Tamagotchi member){
+  //   int index = 0;
+  //   for (int i = 0; i < this.members.length ; i++){
+  //   for(Tamagotchi individual : this.members){
+  //     if(this.members[index] == member){
+  //       this.members[index] = null;
+  //       }
+  //     }
+  //     index++;
+  //   }
+  // }
+
+  public void computeDramaFactor(){
+    int total_drama = 0;
+
+    for (int i = 0; i < this.members.length; i++){
+      total_drama += this.members[i].drama_level;
+    }
+
+    // this.setDramaFactor(total_drama/countMembers());
+    this.setDramaFactor(total_drama);
+    System.out.println(getDramaFactor());
+    // this.setDramaFactor(total_drama));
+  }
+
+  // Math.round(total_drama
+
+  // System.out.println("this is: " + total_drama );
+
+
+
 
 }

@@ -17,10 +17,11 @@ public class HouseTest{
     house1 = new House("Veritable", false, 0);
     house2 = new House("The Honky Tonk", false, 0);
     house3 = new House("Tomogatchi Groto", false, 0);
-    wickedlytamagotchi1 = new WickedlyTamagotchi("Wyvern", 0, 0, 0, 0, false, 1);
+    wickedlytamagotchi1 = new WickedlyTamagotchi("Wyvern", 0, 0, 1, 0, false, 1);
     wickedlytamagotchi2 = new WickedlyTamagotchi("Testy", 8, 4, 4, 4, true, 80);
     wickedlytamagotchi3 = new WickedlyTamagotchi("Excess", 10, 0, 10, 1, true, 90);
   }
+  // name, hunger_level, happiness_level, drama_level, age, alive, weight
 
   @Test
   public void canGetName(){
@@ -75,6 +76,23 @@ public class HouseTest{
     }
     assertEquals(true, house1.isFull());
   }
+
+  @Test
+  public void canRemoveMember(){
+    house2.addMember(wickedlytamagotchi1);
+    house2.addMember(wickedlytamagotchi3);
+    house2.removeMember(wickedlytamagotchi3);
+    assertEquals(1, house2.countMembers());
+  }
+
+  // @Test
+  // public void canComputeDramaFactor(){
+  //   house2.addMember(wickedlytamagotchi1);
+  //   house2.addMember(wickedlytamagotchi2);
+  //   house2.addMember(wickedlytamagotchi3);
+  //   house2.computeDramaFactor();
+  //   assertEquals(5, house2.getDramaFactor());
+  // }
 
 
 }

@@ -106,7 +106,6 @@ public abstract class Tamagotchi {
   }
 
   public void isAging(double minutes){
-    // this.age += Math.round((minutes/41.76));
     double increase = minutes/41.76;
     increase = Math.round(increase *100.0)/100.0;
     age += increase;
@@ -114,24 +113,29 @@ public abstract class Tamagotchi {
 
   public String feed(String food){
     int hunger_decrease;
+    int happiness_increase;
       switch (food){
-        case "protein shake": hunger_decrease = 3;
-        // happiness_increase = 1;
+        case "protein shake": 
+        hunger_decrease = 3;
+        happiness_increase = 1;
         break;
         case "slurpy": hunger_decrease = 1;
         break;
-        case "steak": hunger_decrease = 4;
-        // happiness_increase = 2;
+        case "steak": 
+        hunger_decrease = 4;
+        happiness_increase = 2;
         break;
         case "lemon curd": hunger_decrease = 1;
         break;
         case "cherry cough syrup": hunger_decrease = 1;
         break;
-        case "irn-bru": hunger_decrease = 2;
-        // happiness_increase = 1;
+        case "irn-bru": 
+        hunger_decrease = 2;
+        happiness_increase = 1;
         break;
-        case "marmelade haggis": hunger_decrease = 5;
-        // happiness_increase = 3;
+        case "marmelade haggis": 
+        hunger_decrease = 5;
+        happiness_increase = 3;
         break;
         default: return "Yeachtk, I don't eat dat!";
         // default: System.out.printl("yeachtk, I don't eat dat!");
@@ -154,5 +158,33 @@ public abstract class Tamagotchi {
      this.setDramaLevel(this.drama_level + 4);
     }
   }
+
+  public void starves(int time_since_feed){
+    if(time_since_feed > 584.64 && this.hunger_level == 10 && this.weight < 10){
+      setAliveTrueFalse(false);
+    }
+  }
+
+  public void depressed(int time_since_happy_increase){
+    if(time_since_happy_increase > 7015.68 && this.happiness_level == 0){
+      setAliveTrueFalse(false);
+    }
+  }
+
+  public void heartAttack(int time_since_relaxation){
+    if(time_since_relaxation > 292.32 && this.drama_level == 10){
+      setAliveTrueFalse(false);
+    }
+  }
+
+  public void morbidlyObese(int time_since_reaching_95kg){
+    if(time_since_reaching_95kg > 1169.28 && this.weight > 95){
+      setAliveTrueFalse(false);
+    }
+  }
+
+
+
+
 }
 

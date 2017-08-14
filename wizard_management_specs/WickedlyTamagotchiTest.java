@@ -8,12 +8,16 @@ public class WickedlyTamagotchiTest{
   WickedlyTamagotchi wickedlytamagotchi1;
   WickedlyTamagotchi wickedlytamagotchi2;
   WickedlyTamagotchi wickedlytamagotchi3;
+  WickedlyTamagotchi wickedlytamagotchi4;
+  WickedlyTamagotchi wickedlytamagotchi5;
 
   @Before
   public void before(){
     wickedlytamagotchi1 = new WickedlyTamagotchi("Wyvern", 0, 0, 0, 0, false, 1);
     wickedlytamagotchi2 = new WickedlyTamagotchi("Testy", 8, 4, 4, 4, true, 80);
     wickedlytamagotchi3 = new WickedlyTamagotchi("Excess", 10, 0, 10, 1, true, 90);
+    wickedlytamagotchi4 = new WickedlyTamagotchi("Skinny", 10, 0, 10, 1, true, 9);
+    wickedlytamagotchi5 = new WickedlyTamagotchi("BigN", 10, 0, 10, 1, true, 96);
   }
   // name, hunger_level, happiness_level, drama_level, age, alive, weight
 
@@ -148,6 +152,30 @@ public class WickedlyTamagotchiTest{
     wickedlytamagotchi3.getsOverweight();
     assertEquals(0, wickedlytamagotchi3.getHappinessLevel());
     assertEquals(10, wickedlytamagotchi3.getDramaLevel());
+  }
+
+  @Test
+  public void canStarve(){
+    wickedlytamagotchi4.starves(600);
+    assertEquals(false, wickedlytamagotchi4.getAliveTrueFalse());
+  }
+
+  @Test
+  public void getsDepressed(){
+    wickedlytamagotchi1.depressed(7500);
+    assertEquals(false, wickedlytamagotchi1.getAliveTrueFalse());
+  }
+
+  @Test
+  public void getsHeartAttack(){
+    wickedlytamagotchi4.heartAttack(300);
+    assertEquals(false, wickedlytamagotchi4.getAliveTrueFalse());
+  }
+
+  @Test
+  public void getsMorbidlyObese(){
+    wickedlytamagotchi5.morbidlyObese(1200);
+    assertEquals(false, wickedlytamagotchi5.getAliveTrueFalse());
   }
 }
 
