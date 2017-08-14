@@ -81,11 +81,11 @@ public abstract class Tamagotchi {
     this.age = age;
   }
 
-  public Boolean getAliveTrueFalse(){
+  public boolean getAliveTrueFalse(){
     return this.alive;
   }
 
-  public void setAliveTrueFalse(Boolean soul){
+  public void setAliveTrueFalse(boolean soul){
     this.alive = soul;
   }
 

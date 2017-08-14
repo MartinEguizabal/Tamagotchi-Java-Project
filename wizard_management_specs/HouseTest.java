@@ -55,10 +55,26 @@ public class HouseTest{
     assertEquals(5, house1.getDramaFactor());
   }
 
-  // @Test
-  // public void canCountMembers(){
-    
-  // }
+  @Test
+  public void canCountMembers(){
+    house1.addMember(wickedlytamagotchi1);
+    assertEquals(1, house1.countMembers());
+  }
+
+  @Test
+  public void canAddMember(){
+    house1.addMember(wickedlytamagotchi2);
+    house1.addMember(wickedlytamagotchi2);
+    assertEquals(2, house1.countMembers());
+  }
+
+  @Test
+  public void checkIsFull(){
+    for(int i = 0; i < 10; i++){
+      house1.addMember(wickedlytamagotchi1);
+    }
+    assertEquals(true, house1.isFull());
+  }
 
 
 }

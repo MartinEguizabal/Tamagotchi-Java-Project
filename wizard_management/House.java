@@ -7,7 +7,7 @@ public class House{
   int drama_factor;
   Tamagotchi[] members;
 
-  public House(String name, Boolean contract, int drama_factor){
+  public House(String name, boolean contract, int drama_factor){
     this.name = name;
     this.contract = contract;
     this.drama_factor = drama_factor;
@@ -22,11 +22,11 @@ public class House{
     this.name = name;
   }
 
-  public Boolean getContract(){
+  public boolean getContract(){
     return this.contract;
   }
 
-  public void setContract(Boolean contract){
+  public void setContract(boolean contract){
     this.contract = contract;
   }
 
@@ -52,6 +52,18 @@ public class House{
       } 
     }
     return count;
+  }
+
+  public void addMember(Tamagotchi member){
+    if(isFull()){
+      return;
+    }
+    int index = this.countMembers();
+    members[index] = member;
+  }
+
+  public boolean isFull(){
+    return this.countMembers() == this.members.length;
   }
 
 
