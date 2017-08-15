@@ -33,13 +33,12 @@ public abstract class Tamagotchi {
   }
 
   public void setHungerLevel(int hunger_level){
-    // if((this.hunger_level >= 0 && this.hunger_level < 10) && (hunger_level >= 0 && hunger_level <= 10)){
     this.hunger_level = hunger_level;
-    if (this.happiness_level < 0){
-      this.happiness_level = 0;
+    if (this.hunger_level < 0){
+      this.hunger_level = 0;
     }
-    if(this.happiness_level > 10){
-      this.happiness_level = 10;
+    if(this.hunger_level > 10){
+      this.hunger_level = 10;
     }
   }
 
@@ -48,7 +47,6 @@ public abstract class Tamagotchi {
   }
 
   public void setHappinessLevel(int happiness_level){
-    // if((this.happiness_level >= 0 && this.happiness_level < 10) && (happiness_level >= 0 && happiness_level <= 10)){
     this.happiness_level = happiness_level;
     if (this.happiness_level < 0){
       this.happiness_level = 0;
@@ -63,11 +61,13 @@ public abstract class Tamagotchi {
   }
 
   public void setDramaLevel(int drama_level){
-    // if((this.drama_level >= 0 && this.drama_level < 10) && (drama_level >= 0 && drama_level <= 10)){
     this.drama_level = drama_level;
     if (this.drama_level < 0){
       this.drama_level = 0;
     }
+    // this.drama.level = this.drama_level < 0 ? 0;
+    // this.drama_level = (this.drama_level < 0) ? 0;
+    // this.drama_level < 0 ? : this.drama_level = 0;
     if(this.drama_level > 10){
       this.drama_level = 10;
     }
@@ -99,10 +99,11 @@ public abstract class Tamagotchi {
     }
   }
 
-  public void isBorn(int hunger_level, int happiness_level, int drama_level){
-    this.setHungerLevel(hunger_level);
-    this.setHappinessLevel(happiness_level);
-    this.setDramaLevel(drama_level);
+  public void isBorn(){
+    this.setHungerLevel(10);
+    this.setHappinessLevel(4);
+    this.setDramaLevel(3);
+    this.setAliveTrueFalse(true);
   }
 
   public void isAging(double minutes){
@@ -112,14 +113,16 @@ public abstract class Tamagotchi {
   }
 
   public String feed(String food){
-    int hunger_decrease;
-    int happiness_increase;
+    int hunger_decrease = 0;
+    int happiness_increase = 0;
+    int drama_decrease = 0;
       switch (food){
         case "protein shake": 
         hunger_decrease = 3;
         happiness_increase = 1;
         break;
-        case "slurpy": hunger_decrease = 1;
+        case "slurpy": 
+        hunger_decrease = 1;
         break;
         case "steak": 
         hunger_decrease = 4;
@@ -127,7 +130,9 @@ public abstract class Tamagotchi {
         break;
         case "lemon curd": hunger_decrease = 1;
         break;
-        case "cherry cough syrup": hunger_decrease = 1;
+        case "cherry cough syrup": 
+        hunger_decrease = 1;
+        drama_decrease = 3;
         break;
         case "irn-bru": 
         hunger_decrease = 2;
@@ -136,12 +141,14 @@ public abstract class Tamagotchi {
         case "marmelade haggis": 
         hunger_decrease = 5;
         happiness_increase = 3;
+        drama_decrease = 2;
         break;
         default: return "Yeachtk, I don't eat dat!";
         // default: System.out.printl("yeachtk, I don't eat dat!");
       }
       this.setHungerLevel(this.hunger_level -= hunger_decrease);
-      // this.happiness_level += happiness_increase;
+      this.setHappinessLevel(this.happiness_level += happiness_increase);
+      this.setDramaLevel(this.drama_level -= drama_decrease);
         // System.out.println("Yummy!");
       return "Yummy";
   }
@@ -182,6 +189,10 @@ public abstract class Tamagotchi {
       setAliveTrueFalse(false);
     }
   }
+
+  // how to link game with time, especially in above method
+  // fix tierney
+  // printout or return strings?
 
 
 

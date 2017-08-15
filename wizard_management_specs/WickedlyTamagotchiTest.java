@@ -101,7 +101,7 @@ public class WickedlyTamagotchiTest{
 
   @Test
   public void canIsBorn(){
-    wickedlytamagotchi1.isBorn(10, 4, 3);
+    wickedlytamagotchi1.isBorn();
     assertEquals(10, wickedlytamagotchi1.getHungerLevel());
     assertEquals(4, wickedlytamagotchi1.getHappinessLevel());
     assertEquals(3, wickedlytamagotchi1.getDramaLevel());
@@ -120,16 +120,23 @@ public class WickedlyTamagotchiTest{
 
   @Test
   public void canFeed(){
-    wickedlytamagotchi1.isBorn(10, 4, 3);
     assertEquals("Yummy", wickedlytamagotchi1.feed("protein shake"));
-    assertEquals(7, wickedlytamagotchi1.getHungerLevel());
+    assertEquals(0, wickedlytamagotchi1.getHungerLevel());
+    assertEquals(1, wickedlytamagotchi1.getHappinessLevel());
+  }
+
+  @Test
+  public void canFeed__Two(){
+    assertEquals("Yummy", wickedlytamagotchi2.feed("marmelade haggis"));
+    assertEquals(3, wickedlytamagotchi2.getHungerLevel());
+    assertEquals(7, wickedlytamagotchi2.getHappinessLevel());
+    assertEquals(2, wickedlytamagotchi2.getDramaLevel());
   }
 
   @Test
   public void canFeedDontButLikeFood(){
-    wickedlytamagotchi1.isBorn(10, 4, 3);
     assertEquals("Yeachtk, I don't eat dat!", wickedlytamagotchi1.feed("spinach"));
-    assertEquals(10, wickedlytamagotchi1.getHungerLevel());
+    assertEquals(10, wickedlytamagotchi5.getHungerLevel());
   }
 
   @Test
