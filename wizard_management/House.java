@@ -74,36 +74,31 @@ public class House{
     }
   }
 
-  // public void removeMember(Tamagotchi member){
-  //   int index = 0;
-  //   for (int i = 0; i < this.members.length ; i++){
-  //   for(Tamagotchi individual : this.members){
-  //     if(this.members[index] == member){
-  //       this.members[index] = null;
-  //       }
-  //     }
-  //     index++;
-  //   }
-  // }
-
   public void computeDramaFactor(){
     int total_drama = 0;
 
     for (int i = 0; i < this.members.length; i++){
-      total_drama += this.members[i].drama_level;
+      if (this.members[i] != null){
+        total_drama += this.members[i].drama_level;
+      }
     }
-
-    // this.setDramaFactor(total_drama/countMembers());
-    this.setDramaFactor(total_drama);
-    System.out.println(getDramaFactor());
-    // this.setDramaFactor(total_drama));
+    this.setDramaFactor(total_drama/countMembers());
   }
 
-  // Math.round(total_drama
-
-  // System.out.println("this is: " + total_drama );
-
-
-
+  public void calculateAffinity(){
+    for(int s = 0; s <this.members.length; s++){
+      if(this.members[s] instanceof ScratchyTamagotchi){
+        for(int w = 0; w <this.members.length; w++){
+          if(this.members[w] instanceof WickedlyTamagotchi){
+            this.members[w].setDramaLevel(this.members[w].drama_level + 1);
+            this.members[s].setDramaLevel(this.members[s].drama_level + 1);
+            this.members[w].setHappinessLevel(this.members[w].happiness_level - 1);
+            this.members[s].setHappinessLevel(this.members[s].happiness_level - 1);
+            System.out.println("total =" + this.members[w].drama_level);
+          }
+        }
+      }
+    }
+  }
 
 }

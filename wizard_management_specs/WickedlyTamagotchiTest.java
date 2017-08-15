@@ -10,6 +10,11 @@ public class WickedlyTamagotchiTest{
   WickedlyTamagotchi wickedlytamagotchi3;
   WickedlyTamagotchi wickedlytamagotchi4;
   WickedlyTamagotchi wickedlytamagotchi5;
+  ScratchyTamagotchi scratchytamagotchi1;
+  ScratchyTamagotchi scratchytamagotchi2;
+  House house1;
+  House house2;
+  House house3;
 
   @Before
   public void before(){
@@ -18,6 +23,11 @@ public class WickedlyTamagotchiTest{
     wickedlytamagotchi3 = new WickedlyTamagotchi("Excess", 10, 0, 10, 1, true, 90);
     wickedlytamagotchi4 = new WickedlyTamagotchi("Skinny", 10, 0, 10, 1, true, 9);
     wickedlytamagotchi5 = new WickedlyTamagotchi("BigN", 10, 0, 10, 1, true, 96);
+    scratchytamagotchi1 = new ScratchyTamagotchi("TestTamagotchi", 0, 0, 0, 0, false, 1);
+    scratchytamagotchi2 = new ScratchyTamagotchi("Infinity", 5, 5, 5, 5, true, 1);
+    house1 = new House("Veritable", false, 0);
+    house2 = new House("The Honky Tonk", false, 0);
+    house3 = new House("Tomogatchi Groto", false, 0);
   }
   // name, hunger_level, happiness_level, drama_level, age, alive, weight
 
@@ -99,6 +109,8 @@ public class WickedlyTamagotchiTest{
     assertEquals(10, wickedlytamagotchi1.getWeight());
   }
 
+  // LIFE EVENTS:
+
   @Test
   public void canIsBorn(){
     wickedlytamagotchi1.isBorn();
@@ -118,12 +130,14 @@ public class WickedlyTamagotchiTest{
   // A Tamagotchi month is 1169.28 mintues or 19.49 hours.
   // A Tamagotchi year is 14031.36, 233.86 hours or 9.74 days.
 
-  @Test
-  public void canFeed(){
-    assertEquals("Yummy", wickedlytamagotchi1.feed("protein shake"));
-    assertEquals(0, wickedlytamagotchi1.getHungerLevel());
-    assertEquals(1, wickedlytamagotchi1.getHappinessLevel());
-  }
+  // POSITIVE ACTIONS:
+
+  // @Test
+  // public void canFeed(){
+  //   assertEquals("Yummy", wickedlytamagotchi1.feed("halloween candy"));
+  //   assertEquals(0, wickedlytamagotchi1.getHungerLevel());
+  //   assertEquals(1, wickedlytamagotchi1.getHappinessLevel());
+  // }
 
   @Test
   public void canFeed__Two(){
@@ -147,6 +161,8 @@ public class WickedlyTamagotchiTest{
     assertEquals(3, wickedlytamagotchi2.getDramaLevel());
   }
 
+  // VITALS ATTRITION OVER TIME:
+
   @Test
   public void canGetsOverweight(){
     wickedlytamagotchi2.getsOverweight();
@@ -160,6 +176,8 @@ public class WickedlyTamagotchiTest{
     assertEquals(0, wickedlytamagotchi3.getHappinessLevel());
     assertEquals(10, wickedlytamagotchi3.getDramaLevel());
   }
+
+  // ULTIMATE SANCTIONS:
 
   @Test
   public void canStarve(){
@@ -183,6 +201,23 @@ public class WickedlyTamagotchiTest{
   public void getsMorbidlyObese(){
     wickedlytamagotchi5.morbidlyObese(1200);
     assertEquals(false, wickedlytamagotchi5.getAliveTrueFalse());
+  }
+
+  // HOUSE DRAMA FACTOR AFFECT:
+
+  @Test
+  public void getsDramaFactorAffect(){
+    house3.addMember(wickedlytamagotchi1);
+    house3.addMember(wickedlytamagotchi2);
+    house3.addMember(wickedlytamagotchi3);
+    house3.addMember(scratchytamagotchi1);
+    house3.addMember(scratchytamagotchi2);
+    wickedlytamagotchi1.dramaFactorAffect(house3);
+    wickedlytamagotchi2.dramaFactorAffect(house3);
+    wickedlytamagotchi3.dramaFactorAffect(house3);
+    // assertEquals(2, wickedlytamagotchi1.getDramaLevel());
+    assertEquals(6, wickedlytamagotchi2.getDramaLevel());
+    assertEquals(10, wickedlytamagotchi3.getDramaLevel());
   }
 }
 

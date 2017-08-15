@@ -1,6 +1,7 @@
 package wizard_management;
+import behaviours.*;
 
-public abstract class Tamagotchi {
+public abstract class Tamagotchi implements Eat{
 
   String name;
   int hunger_level;
@@ -65,13 +66,13 @@ public abstract class Tamagotchi {
     if (this.drama_level < 0){
       this.drama_level = 0;
     }
-    // this.drama.level = this.drama_level < 0 ? 0;
-    // this.drama_level = (this.drama_level < 0) ? 0;
-    // this.drama_level < 0 ? : this.drama_level = 0;
     if(this.drama_level > 10){
       this.drama_level = 10;
     }
   }
+  // this.drama.level = this.drama_level < 0 ? 0;
+  // this.drama_level = (this.drama_level < 0) ? 0;
+  // this.drama_level < 0 ? : this.drama_level = 0;
 
   public double getAge(){
     return this.age;
@@ -99,6 +100,8 @@ public abstract class Tamagotchi {
     }
   }
 
+  // LIFE EVENTS:
+
   public void isBorn(){
     this.setHungerLevel(10);
     this.setHappinessLevel(4);
@@ -112,46 +115,9 @@ public abstract class Tamagotchi {
     age += increase;
   }
 
-  public String feed(String food){
-    int hunger_decrease = 0;
-    int happiness_increase = 0;
-    int drama_decrease = 0;
-      switch (food){
-        case "protein shake": 
-        hunger_decrease = 3;
-        happiness_increase = 1;
-        break;
-        case "slurpy": 
-        hunger_decrease = 1;
-        break;
-        case "steak": 
-        hunger_decrease = 4;
-        happiness_increase = 2;
-        break;
-        case "lemon curd": hunger_decrease = 1;
-        break;
-        case "cherry cough syrup": 
-        hunger_decrease = 1;
-        drama_decrease = 3;
-        break;
-        case "irn-bru": 
-        hunger_decrease = 2;
-        happiness_increase = 1;
-        break;
-        case "marmelade haggis": 
-        hunger_decrease = 5;
-        happiness_increase = 3;
-        drama_decrease = 2;
-        break;
-        default: return "Yeachtk, I don't eat dat!";
-        // default: System.out.printl("yeachtk, I don't eat dat!");
-      }
-      this.setHungerLevel(this.hunger_level -= hunger_decrease);
-      this.setHappinessLevel(this.happiness_level += happiness_increase);
-      this.setDramaLevel(this.drama_level -= drama_decrease);
-        // System.out.println("Yummy!");
-      return "Yummy";
-  }
+  // POSITIVE ACTIONS:
+
+  
 
   public void sleep(){
     this.setHungerLevel(this.hunger_level + 1);
@@ -159,12 +125,24 @@ public abstract class Tamagotchi {
     this.setDramaLevel(this.drama_level - 1);
   }
 
+  // VITALS OVER TIME:
+
+  public void reallyHungry(int time_since_feed){
+    if(time_since_feed > 83.52){
+      this.setHungerLevel(this.hunger_level -= 1);
+    }
+  }
+
+  // INTERMEDIARY SANCTIONS:
+
   public void getsOverweight(){
     if(getWeight() > 75){
      this.setHappinessLevel(this.happiness_level - 3);
      this.setDramaLevel(this.drama_level + 4);
     }
   }
+
+  // ULTIMATE SANCTIONS:
 
   public void starves(int time_since_feed){
     if(time_since_feed > 584.64 && this.hunger_level == 10 && this.weight < 10){
@@ -190,12 +168,20 @@ public abstract class Tamagotchi {
     }
   }
 
-  // how to link game with time, especially in above method
-  // fix tierney
-  // printout or return strings?
+  // HOUSE DRAMA FACTOR AFFECT:
 
-
-
-
+  public void dramaFactorAffect(House house){
+    house.computeDramaFactor();
+    int drama_factor = (house.drama_factor/2);
+    System.out.println("total =" + house.drama_factor);
+    this.setDramaLevel(this.drama_level += drama_factor);
+  }
 }
+
+// how to link game with time, especially in above method
+// fix tierney
+// printout or return strings?
+// efficient way to set alive as a condition on all methods?
+// can't extend and override feed method
+// Calculate Affinity method doesn't work
 
