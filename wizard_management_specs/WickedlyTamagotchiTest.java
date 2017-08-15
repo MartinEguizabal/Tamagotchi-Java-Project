@@ -132,12 +132,12 @@ public class WickedlyTamagotchiTest{
 
   // POSITIVE ACTIONS:
 
-  // @Test
-  // public void canFeed(){
-  //   assertEquals("Yummy", wickedlytamagotchi1.feed("halloween candy"));
-  //   assertEquals(0, wickedlytamagotchi1.getHungerLevel());
-  //   assertEquals(1, wickedlytamagotchi1.getHappinessLevel());
-  // }
+  @Test
+  public void canFeed(){
+    assertEquals("Yummy", wickedlytamagotchi1.feed("halloween candy"));
+    assertEquals(0, wickedlytamagotchi1.getHungerLevel());
+    assertEquals(3, wickedlytamagotchi1.getHappinessLevel());
+  }
 
   @Test
   public void canFeed__Two(){
@@ -161,8 +161,36 @@ public class WickedlyTamagotchiTest{
     assertEquals(3, wickedlytamagotchi2.getDramaLevel());
   }
 
+  @Test
+  public void canShopAtCharityShop(){
+    wickedlytamagotchi2.shopAtCharityShop();
+    assertEquals(2, wickedlytamagotchi2.getDramaLevel());
+    assertEquals(0, wickedlytamagotchi2.getHappinessLevel());
+  }
+
+  @Test
+  public void canPamper(){
+    wickedlytamagotchi2.pamper();
+    assertEquals(9, wickedlytamagotchi2.getHappinessLevel());
+    assertEquals(7, wickedlytamagotchi2.getDramaLevel());
+  }
+
   // VITALS ATTRITION OVER TIME:
 
+  @Test
+  public void canGettingHungry(){
+    wickedlytamagotchi2.gettingHungry(90);
+    assertEquals(9, wickedlytamagotchi2.getHungerLevel());
+  }
+
+  @Test
+  public void canGettingSleepy(){
+    wickedlytamagotchi2.gettingSleepy(130);
+    assertEquals(3, wickedlytamagotchi2.getHappinessLevel());
+    assertEquals(5, wickedlytamagotchi2.getDramaLevel());
+  }
+
+  // INTERMEDIARY SANCTIONS:
   @Test
   public void canGetsOverweight(){
     wickedlytamagotchi2.getsOverweight();

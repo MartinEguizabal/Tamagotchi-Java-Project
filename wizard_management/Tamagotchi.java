@@ -117,7 +117,7 @@ public abstract class Tamagotchi implements Eat{
 
   // POSITIVE ACTIONS:
 
-  
+  // note feed method is in child classes
 
   public void sleep(){
     this.setHungerLevel(this.hunger_level + 1);
@@ -125,11 +125,28 @@ public abstract class Tamagotchi implements Eat{
     this.setDramaLevel(this.drama_level - 1);
   }
 
-  // VITALS OVER TIME:
+  public void shopAtCharityShop(){
+    this.setDramaLevel(this.drama_level - 2);
+    this.setHappinessLevel(this.happiness_level - 4);
+  }
 
-  public void reallyHungry(int time_since_feed){
+  public void pamper(){
+    this.setHappinessLevel(this.happiness_level + 5);
+    this.setDramaLevel(this.drama_level + 3);
+  }
+
+  // VITALS ATTRITION OVER TIME:
+
+  public void gettingHungry(int time_since_feed){
     if(time_since_feed > 83.52){
-      this.setHungerLevel(this.hunger_level -= 1);
+      this.setHungerLevel(this.hunger_level += 1);
+    }
+  }
+
+  public void gettingSleepy(int time_since_sleep){
+    if(time_since_sleep > 125.28){
+      this.setHappinessLevel(this.happiness_level -= 1);
+      this.setDramaLevel(this.drama_level += 1);
     }
   }
 

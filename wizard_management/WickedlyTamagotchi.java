@@ -11,6 +11,10 @@ public class WickedlyTamagotchi extends Tamagotchi {
       int happiness_increase = 0;
       int drama_decrease = 0;
         switch (food){
+          case "halloween candy": 
+          hunger_decrease = 2;
+          happiness_increase = 3;
+          break;
           case "protein shake": 
           hunger_decrease = 3;
           happiness_increase = 1;
