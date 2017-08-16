@@ -46,4 +46,13 @@ public class CampusTest{
     campus1.addHouse(house2);
     assertEquals("Can't find house", campus1.findHouse(house3));
   }
+
+  @Test
+  public void canAwardContract(){
+    campus1.addHouse(house1);
+    campus1.addHouse(house2);
+    campus1.addHouse(house3);
+    House awarded_house = campus1.awardContract();
+    assertEquals(true, campus1.getArray().contains(awarded_house));
+  }
 }

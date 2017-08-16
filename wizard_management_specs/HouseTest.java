@@ -8,6 +8,7 @@ public class HouseTest{
   House house1;
   House house2;
   House house3;
+  Campus campus1;
   WickedlyTamagotchi wickedlytamagotchi1;
   WickedlyTamagotchi wickedlytamagotchi2;
   WickedlyTamagotchi wickedlytamagotchi3;
@@ -21,6 +22,7 @@ public class HouseTest{
     house1 = new House("Veritable", false, 0);
     house2 = new House("The Honky Tonk", false, 0);
     house3 = new House("Tomogatchi Groto", false, 0);
+    campus1 = new Campus("Tamagotchi College Campus");
     wickedlytamagotchi1 = new WickedlyTamagotchi("Wyvern", 0, 0, 1, 0, false, 1);
     wickedlytamagotchi2 = new WickedlyTamagotchi("Testy", 8, 4, 4, 4, true, 80);
     wickedlytamagotchi3 = new WickedlyTamagotchi("Excess", 10, 0, 10, 1, true, 90);
@@ -112,6 +114,17 @@ public class HouseTest{
     assertEquals(4, scratchytamagotchi2.getHappinessLevel());
     assertEquals(3, wickedlytamagotchi2.getHappinessLevel());
   }
+
+  // @Test
+  // public void canAwardContract(){
+  //   campus1.addHouse(house1);
+  //   campus1.addHouse(house2);
+  //   campus1.addHouse(house3);
+  //   House awarded_house = campus1.awardContract();
+
+  //   ArrayList<House> candidate_houses = new ArrayList
+  //   assertEquals(true, campus1.getArray().contains(awarded_house));
+  // }
 
 
 }

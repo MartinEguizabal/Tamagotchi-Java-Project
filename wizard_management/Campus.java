@@ -1,5 +1,6 @@
 package wizard_management;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Campus{
 
@@ -17,6 +18,10 @@ public class Campus{
 
   public void setName(String name){
     this.name = name;
+  }
+
+  public ArrayList<House> getArray(){
+    return this.houses;
   }
 
   public int countHouses(){
@@ -38,6 +43,12 @@ public class Campus{
       }
     }
     return "Can't find house";
+  }
+
+  public House awardContract(){
+    Collections.shuffle(this.houses);
+    houses.get(0).setContract(true);
+    return houses.get(0);
   }
 
 
