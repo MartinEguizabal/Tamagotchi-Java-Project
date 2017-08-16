@@ -10,6 +10,7 @@ public class WickedlyTamagotchiTest{
   WickedlyTamagotchi wickedlytamagotchi3;
   WickedlyTamagotchi wickedlytamagotchi4;
   WickedlyTamagotchi wickedlytamagotchi5;
+  WickedlyTamagotchi wickedlytamagotchi6;
   ScratchyTamagotchi scratchytamagotchi1;
   ScratchyTamagotchi scratchytamagotchi2;
   House house1;
@@ -23,6 +24,7 @@ public class WickedlyTamagotchiTest{
     wickedlytamagotchi3 = new WickedlyTamagotchi("Excess", 10, 0, 10, 1, true, 90);
     wickedlytamagotchi4 = new WickedlyTamagotchi("Skinny", 10, 0, 10, 1, true, 9);
     wickedlytamagotchi5 = new WickedlyTamagotchi("BigN", 10, 0, 10, 1, true, 96);
+    wickedlytamagotchi6 = new WickedlyTamagotchi("Totally Wicked", 6, 6, 6, 6, true, 50);
     scratchytamagotchi1 = new ScratchyTamagotchi("TestTamagotchi", 0, 0, 0, 0, false, 1);
     scratchytamagotchi2 = new ScratchyTamagotchi("Infinity", 5, 5, 5, 5, true, 1);
     house1 = new House("Veritable", false, 0);
@@ -203,6 +205,7 @@ public class WickedlyTamagotchiTest{
   }
 
   // INTERMEDIARY SANCTIONS:
+
   @Test
   public void canGetsOverweight(){
     wickedlytamagotchi2.getsOverweight();
@@ -215,6 +218,33 @@ public class WickedlyTamagotchiTest{
     wickedlytamagotchi3.getsOverweight();
     assertEquals(0, wickedlytamagotchi3.getHappinessLevel());
     assertEquals(10, wickedlytamagotchi3.getDramaLevel());
+  }
+
+  @Test
+  public void getsNearlyStarving(){
+    wickedlytamagotchi6.nearlyStarving(600);
+    assertEquals(3, wickedlytamagotchi6.getHappinessLevel());
+    assertEquals(9, wickedlytamagotchi6.getHungerLevel());
+  }
+
+  @Test
+  public void getsNearlyStarving__no_change(){
+    wickedlytamagotchi6.nearlyStarving(200);
+    assertEquals(6, wickedlytamagotchi6.getHappinessLevel());
+    assertEquals(6, wickedlytamagotchi6.getHungerLevel());
+  }
+
+  @Test
+  public void getsDefinitelySad(){
+    wickedlytamagotchi6.nearlyStarving(600);
+    assertEquals(3, wickedlytamagotchi6.getHappinessLevel());
+  }
+
+  @Test
+  public void getsCertainlyStressed(){
+    wickedlytamagotchi6.certainlyStressed(1200);
+    assertEquals(10, wickedlytamagotchi6.getDramaLevel());
+    assertEquals(5, wickedlytamagotchi6.getHappinessLevel());
   }
 
   // ULTIMATE SANCTIONS:

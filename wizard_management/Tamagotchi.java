@@ -172,21 +172,32 @@ public abstract class Tamagotchi implements Eat{
     }
   }
 
-  public void verySleepy(int time_since_sleep){
-    if(time_since_sleep > 1169.28){
-      this.setHappinessLevel(this.happiness_level -= 3);
-      this.setDramaLevel(this.drama_level += 3);
+  public void nearlyStarving(int time_since_feed){
+    if(time_since_feed > 584.64){
+      this.setHungerLevel(this.hunger_level + 3);
+      this.setHappinessLevel(this.happiness_level - 3);
     }
   }
 
-  // public void depressed(int time_since_happiness_increase){
-  //   if(time_since_sleep > 1169.28){
-  //     this.setHappinessLevel(this.happiness_level -= 3);
-  //     this.setDramaLevel(this.drama_level += 3);
-  //   }
-  // }
+  public void verySleepy(int time_since_sleep){
+    if(time_since_sleep > 1169.28){
+      this.setHappinessLevel(this.happiness_level - 3);
+      this.setDramaLevel(this.drama_level + 3);
+    }
+  }
 
+  public void definitelySad(int time_since_happiness_increase){
+    if(time_since_happiness_increase > 1169.28){
+      this.setHappinessLevel(this.happiness_level - 4);
+    }
+  }
 
+  public void certainlyStressed(int time_since_drama_decrease){
+    if(time_since_drama_decrease > 1169.28){
+      this.setDramaLevel(this.drama_level + 4);
+      this.setHappinessLevel(this.happiness_level - 1);
+    }
+  }
 
   // ULTIMATE SANCTIONS:
 
