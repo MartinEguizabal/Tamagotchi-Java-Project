@@ -190,6 +190,18 @@ public class WickedlyTamagotchiTest{
     assertEquals(5, wickedlytamagotchi2.getDramaLevel());
   }
 
+  @Test
+  public void canGettingBitSad(){
+    wickedlytamagotchi2.gettingBitSad(300);
+    assertEquals(2, wickedlytamagotchi2.getHappinessLevel());
+  }
+
+  @Test
+  public void canGettingStressed(){
+    wickedlytamagotchi2.gettingStressed(300);
+    assertEquals(6, wickedlytamagotchi2.getDramaLevel());
+  }
+
   // INTERMEDIARY SANCTIONS:
   @Test
   public void canGetsOverweight(){
