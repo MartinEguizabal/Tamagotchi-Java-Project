@@ -16,6 +16,9 @@ public class HouseTest{
   WickedlyTamagotchi wickedlytamagotchi5;
   ScratchyTamagotchi scratchytamagotchi1;
   ScratchyTamagotchi scratchytamagotchi2;
+  ScratchyTamagotchi scratchytamagotchi3;
+  ScratchyTamagotchi scratchytamagotchi4;
+  ItchyTamagotchi itchytamagotchi1;
 
   @Before
   public void before(){
@@ -30,6 +33,9 @@ public class HouseTest{
     wickedlytamagotchi5 = new WickedlyTamagotchi("BigN", 10, 0, 10, 1, true, 96);
     scratchytamagotchi1 = new ScratchyTamagotchi("TestTamagotchi", 0, 0, 0, 0, false, 1);
     scratchytamagotchi2 = new ScratchyTamagotchi("Infinity", 5, 5, 5, 5, true, 1);
+    scratchytamagotchi3 = new ScratchyTamagotchi("JoeCool", 7, 7, 7, 7, true, 1);
+    scratchytamagotchi4 = new ScratchyTamagotchi("YoCool", 8, 8, 8, 8, true, 1);
+    itchytamagotchi1 = new ItchyTamagotchi("Real Itchy", 4, 4, 4, 4, true, 20);
   }
   // name, hunger_level, happiness_level, drama_level, age, alive, weight
 
@@ -96,6 +102,13 @@ public class HouseTest{
   }
 
   @Test
+  public void canFindMember(){
+    house2.addMember(wickedlytamagotchi1);
+    house2.addMember(wickedlytamagotchi3);
+    assertEquals(wickedlytamagotchi3, house2.findMember(wickedlytamagotchi3));
+  }
+
+  @Test
   public void canComputeDramaFactor(){
     house2.addMember(wickedlytamagotchi1);
     house2.addMember(wickedlytamagotchi2);
@@ -105,26 +118,64 @@ public class HouseTest{
   }
 
   @Test
-  public void calculateAffinity(){
+  public void canCalculateAffinity(){
+    house3.addMember(itchytamagotchi1);
+    house3.addMember(scratchytamagotchi2);
+    house3.calculateAffinity();
+    assertEquals(3, itchytamagotchi1.getDramaLevel());
+    assertEquals(3, scratchytamagotchi2.getDramaLevel());
+    assertEquals(5, itchytamagotchi1.getHappinessLevel());
+    assertEquals(5, scratchytamagotchi2.getHappinessLevel());
+  }
+
+  @Test
+  public void canCalculateNegativeAffinity(){
     house2.addMember(wickedlytamagotchi2);
     house2.addMember(scratchytamagotchi2);
-    house2.calculateAffinity();
+    house2.calculateNegativeAffinity();
     assertEquals(6, scratchytamagotchi2.getDramaLevel());
     assertEquals(5, wickedlytamagotchi2.getDramaLevel());
     assertEquals(4, scratchytamagotchi2.getHappinessLevel());
     assertEquals(3, wickedlytamagotchi2.getHappinessLevel());
   }
 
-  // @Test
-  // public void canAwardContract(){
-  //   campus1.addHouse(house1);
-  //   campus1.addHouse(house2);
-  //   campus1.addHouse(house3);
-  //   House awarded_house = campus1.awardContract();
+  @Test
+  public void canGetDramaOfOver5(){
+    house2.addMember(wickedlytamagotchi4);
+    house2.addMember(wickedlytamagotchi5);
+    house2.addMember(scratchytamagotchi3);
+    house2.addMember(scratchytamagotchi4);
+    ArrayList<Tamagotchi> result = house2.getDramaOfOver5();
+    assertEquals(3, result.size());
+  }
 
-  //   ArrayList<House> candidate_houses = new ArrayList
-  //   assertEquals(true, campus1.getArray().contains(awarded_house));
-  // }
+  @Test
+  public void canCalculateMostVotes(){
+    house2.addMember(wickedlytamagotchi4);
+    house2.addMember(wickedlytamagotchi5);
+    house2.addMember(scratchytamagotchi3);
+    house2.addMember(scratchytamagotchi4);
+    house2.getDramaOfOver5();
+    house2.setScoreCard();
+    house2.addVoteToCard(wickedlytamagotchi5, 0);
+    house2.addVoteToCard(scratchytamagotchi3, 2);
+    house2.addVoteToCard(scratchytamagotchi4, 1);
+    assertEquals(scratchytamagotchi3, house2.calculateMostVotes());
+  }
+
+  @Test
+  public void canEject(){
+    house3.addMember(wickedlytamagotchi1);
+    house3.addMember(wickedlytamagotchi2);
+    house3.addMember(wickedlytamagotchi3);
+    house3.addMember(scratchytamagotchi4);
+    house3.getDramaOfOver5();
+    house3.setScoreCard();
+    house3.addVoteToCard(wickedlytamagotchi3, 0);
+    house3.addVoteToCard(scratchytamagotchi4, 2);
+    house3.eject();
+    assertNull(house3.findMember(scratchytamagotchi4));
+  }
 
 
 }

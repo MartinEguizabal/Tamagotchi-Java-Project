@@ -1,4 +1,9 @@
 package wizard_management;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Collections;
+import java.util.Map.*;
+
 
 public class House{
 
@@ -6,12 +11,14 @@ public class House{
   Boolean contract;
   int drama_factor;
   Tamagotchi[] members;
+  HashMap<Tamagotchi, Integer> voteHashMap;
 
   public House(String name, boolean contract, int drama_factor){
     this.name = name;
     this.contract = contract;
     this.drama_factor = drama_factor;
     this.members = new Tamagotchi[10];
+    this.voteHashMap = new HashMap<Tamagotchi, Integer>();
   }
 
   public String getName(){
@@ -36,13 +43,10 @@ public class House{
 
   public void setDramaFactor(int drama_factor){
     this.drama_factor = drama_factor;
-    if (this.drama_factor < 0){
-      this.drama_factor = 0;
-    }
-    if(this.drama_factor > 10){
-      this.drama_factor = 10;
-    }
+    this.drama_factor = this.drama_factor < 0 ? 0 : this.drama_factor;
+    this.drama_factor = this.drama_factor > 10 ? 10 : this.drama_factor;
   }
+
 
   public int countMembers(){
     int count = 0;
@@ -74,6 +78,15 @@ public class House{
     }
   }
 
+  public Tamagotchi findMember(Tamagotchi member){
+    for (int i = 0; i < this.members.length ; i++){
+      if(this.members[i] == member){
+        return this.members[i];
+      }
+    }
+    return null;
+  }
+
   public void computeDramaFactor(){
     int total_drama = 0;
 
@@ -88,17 +101,72 @@ public class House{
   public void calculateAffinity(){
     for(int s = 0; s <this.members.length; s++){
       if(this.members[s] instanceof ScratchyTamagotchi){
+        for(int i = 0; i <this.members.length; i++){
+          if(this.members[i] instanceof ItchyTamagotchi){
+            this.members[i].setDramaLevel(this.members[i].drama_level - 1);
+            this.members[s].setDramaLevel(this.members[s].drama_level - 1);
+            this.members[i].setHappinessLevel(this.members[i].happiness_level + 1);
+            this.members[s].setHappinessLevel(this.members[s].happiness_level + 1);
+          }
+        }
+      }
+    }
+  }
+
+  public void calculateNegativeAffinity(){
+    for(int s = 0; s <this.members.length; s++){
+      if(this.members[s] instanceof ScratchyTamagotchi){
         for(int w = 0; w <this.members.length; w++){
           if(this.members[w] instanceof WickedlyTamagotchi){
             this.members[w].setDramaLevel(this.members[w].drama_level + 1);
             this.members[s].setDramaLevel(this.members[s].drama_level + 1);
             this.members[w].setHappinessLevel(this.members[w].happiness_level - 1);
             this.members[s].setHappinessLevel(this.members[s].happiness_level - 1);
-            System.out.println("total =" + this.members[w].drama_level);
           }
         }
       }
     }
+  }
+
+  public ArrayList<Tamagotchi> getDramaOfOver5(){
+    ArrayList<Tamagotchi> drama_over_5 = new ArrayList<Tamagotchi>();
+
+    for(int i = 0; i < this.members.length ; i++){
+      if(this.members[i] != null && this.members[i].getDramaLevel() > 5){
+        drama_over_5.add(this.members[i]);
+      }
+    }
+    return drama_over_5;
+  }
+
+  public void setScoreCard(){
+    ArrayList<Tamagotchi> tamagotchis_over_5 = this.getDramaOfOver5();
+    for(int i = 0; i < tamagotchis_over_5.size() ; i++){
+        this.voteHashMap.put(tamagotchis_over_5.get(i), 0);
+    }
+  }
+
+  public void addVoteToCard(Tamagotchi tamagotchi, int vote_count){
+    for(Entry<Tamagotchi, Integer> voter : voteHashMap.entrySet()){
+      if(voter.getKey() == tamagotchi){
+        voter.setValue(vote_count);
+      }
+    }
+  }
+
+  public Tamagotchi calculateMostVotes(){
+    int maxVoteValue = (int) (Collections.max(this.voteHashMap.values()));
+      for(Entry<Tamagotchi, Integer> entry : this.voteHashMap.entrySet()){
+        if(entry.getValue() == maxVoteValue){
+          return entry.getKey();
+        }
+      }
+      return null;
+  }
+
+  public void eject(){
+    Tamagotchi ejected_member = this.calculateMostVotes();
+    this.removeMember(ejected_member);
   }
 
 }

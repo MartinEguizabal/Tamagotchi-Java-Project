@@ -35,12 +35,8 @@ public abstract class Tamagotchi implements Eat{
 
   public void setHungerLevel(int hunger_level){
     this.hunger_level = hunger_level;
-    if (this.hunger_level < 0){
-      this.hunger_level = 0;
-    }
-    if(this.hunger_level > 10){
-      this.hunger_level = 10;
-    }
+    this.hunger_level = this.hunger_level < 0 ? 0 : this.hunger_level;
+    this.hunger_level = this.hunger_level > 10 ? 10 : this.hunger_level;
   }
 
   public int getHappinessLevel(){
@@ -49,12 +45,8 @@ public abstract class Tamagotchi implements Eat{
 
   public void setHappinessLevel(int happiness_level){
     this.happiness_level = happiness_level;
-    if (this.happiness_level < 0){
-      this.happiness_level = 0;
-    }
-    if(this.happiness_level > 10){
-      this.happiness_level = 10;
-    }
+    this.happiness_level = this.happiness_level < 0 ? 0 : this.happiness_level;
+    this.happiness_level = this.happiness_level > 10 ? 10 : this.happiness_level;
   }
 
   public int getDramaLevel(){
@@ -63,16 +55,9 @@ public abstract class Tamagotchi implements Eat{
 
   public void setDramaLevel(int drama_level){
     this.drama_level = drama_level;
-    if (this.drama_level < 0){
-      this.drama_level = 0;
-    }
-    if(this.drama_level > 10){
-      this.drama_level = 10;
-    }
+    this.drama_level = this.drama_level < 0 ? 0 : this.drama_level;
+    this.drama_level = this.drama_level > 10 ? 10 : this.drama_level;
   }
-  // this.drama.level = this.drama_level < 0 ? 0;
-  // this.drama_level = (this.drama_level < 0) ? 0;
-  // this.drama_level < 0 ? : this.drama_level = 0;
 
   public double getAge(){
     return this.age;
@@ -241,4 +226,5 @@ public abstract class Tamagotchi implements Eat{
 // efficient way to set alive as a condition on all methods?
 // can't extend and override feed method
 // Calculate Affinity method doesn't work
+
 
